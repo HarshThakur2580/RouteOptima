@@ -24,7 +24,7 @@
 | Feature | Description |
 |---|---|
 | 🗺️ **Interactive Graph Visualization** | SVG-based delivery network graph with animated path highlighting |
-| ⚡ **Real-time Path Optimization** | Instantly computes shortest paths using Dijkstra's algorithm |
+| ⚡ **Real-time Path Optimization** | Instantly computes shortest paths using Dijkstra's algorithm, A* search, Heuristic Search, DFS Search, BFS search Algorithm 
 | 📊 **Detailed Metrics Dashboard** | Shows total cost, number of nodes visited, and estimated delivery time |
 | 🔍 **Step-by-step Algorithm Trace** | Educational view of each iteration of Dijkstra's algorithm |
 | 📱 **Fully Responsive** | Works seamlessly on desktop, tablet, and mobile devices |
@@ -120,15 +120,15 @@ H2 → C4: 2    (fast customer delivery)
 
 | Name | Role | Registration |
 |------|------|-------------|
-| **Ashish Raj** | Developer | 12314533 |
-| **Himanshu Raj** | Developer | 12314450 |
-| **Ashish Kumar** | Developer | 12315759 |
+| **Harsh Ranjan** | Developer | 12412256 |
+| **Prince Thakur** | Developer | 12417104 |
+| **Luvish Dhingra** | Developer | 12411862 |
 
 ---
 
 ## 📬 Contact
 
-📧 **ashishrajstm2003@gmail.com**
+📧 **officialharsh2580@gmail.com**
 
 ---
 
