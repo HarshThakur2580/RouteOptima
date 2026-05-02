@@ -216,6 +216,68 @@
             font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
             font-size: 0.85rem;
         }
+
+        /* Graph control buttons */
+        .graph-ctrl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .graph-ctrl-btn:hover:not(:disabled) { transform: translateY(-2px); filter: brightness(1.15); }
+        .graph-ctrl-btn:active:not(:disabled) { transform: translateY(0); }
+        .graph-ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-play   { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .btn-pause  { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .btn-back   { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .btn-forward{ background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .btn-reset  { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .speed-label { color: #e2e8f0; font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+        .speed-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 110px;
+            height: 6px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #6366f1, #06b6d4);
+            outline: none;
+            cursor: pointer;
+        }
+        .speed-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid #6366f1;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .step-counter {
+            font-size: 0.82rem;
+            color: #a5b4fc;
+            font-weight: 600;
+            min-width: 70px;
+            text-align: center;
+        }
+        .graph-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            background: rgba(15,23,42,0.7);
+            border: 1px solid rgba(99,102,241,0.25);
+            border-radius: 14px;
+            margin-bottom: 14px;
+        }
     </style>
 </head>
 
@@ -413,20 +475,40 @@
                 </div>
 
                 <!-- Graph Visualization -->
-                <div
-                    class="glass-effect rounded-3xl shadow-2xl p-8 mb-10 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                <div class="glass-effect rounded-3xl shadow-2xl p-8 mb-10 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
                     <h2 class="text-xl font-semibold text-white mb-4 flex items-center">
                         <i class="fas fa-project-diagram text-indigo-400 mr-2"></i> Delivery Network Graph
                     </h2>
+
+                    <!-- Graph Control Bar -->
+                    <div class="graph-controls" id="graph-controls">
+                        <button id="btn-play"    class="graph-ctrl-btn btn-play"    disabled>
+                            <i class="fas fa-play"></i> Play
+                        </button>
+                        <button id="btn-pause"   class="graph-ctrl-btn btn-pause"   disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button id="btn-back"    class="graph-ctrl-btn btn-back"    disabled>
+                            <i class="fas fa-step-backward"></i> Back
+                        </button>
+                        <button id="btn-forward" class="graph-ctrl-btn btn-forward" disabled>
+                            <i class="fas fa-step-forward"></i> Forward
+                        </button>
+                        <button id="btn-reset"   class="graph-ctrl-btn btn-reset"   disabled>
+                            <i class="fas fa-undo"></i> Reset
+                        </button>
+                        <span class="speed-label"><i class="fas fa-tachometer-alt mr-1"></i>Speed</span>
+                        <input  type="range" id="speed-slider" class="speed-slider" min="1" max="10" value="5">
+                        <span class="step-counter" id="step-counter">Step 0 / 0</span>
+                    </div>
+
                     <div class="graph-container rounded-lg overflow-hidden h-96">
                         <svg id="delivery-graph" width="100%" height="100%">
                             <defs>
-                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5"
-                                    orient="auto">
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                                     <polygon points="0 0, 10 3.5, 0 7" class="marker-arrow" />
                                 </marker>
                             </defs>
-                            <!-- Graph elements will be added here -->
                         </svg>
                     </div>
                 </div>
@@ -858,7 +940,7 @@
                 });
             }
 
-            // Algorithm info descriptions
+            // ─── Algorithm info descriptions ─────────────────────────────────────────
             const algoDescriptions = {
                 dijkstra: "Dijkstra's (shortest weighted path)",
                 astar: "A* Search (heuristic + cost, optimal)",
@@ -867,19 +949,149 @@
                 greedy: "Heuristic / Greedy Best-First Search"
             };
 
-            const algoInfoText = document.getElementById('algo-info-text');
+            const algoInfoText    = document.getElementById('algo-info-text');
             const algorithmSelect = document.getElementById('algorithm-select');
 
             algorithmSelect.addEventListener('change', () => {
                 algoInfoText.innerHTML = `<span class="font-medium">Algorithm:</span> ${algoDescriptions[algorithmSelect.value]}`;
             });
 
+            // ─── Playback state ───────────────────────────────────────────────────────
+            let playbackExplored = [];   // sequence of node IDs explored
+            let playbackPath     = [];   // final path node IDs
+            let playbackTotalW   = 0;
+            let playbackStep     = 0;    // how many nodes revealed so far
+            let playbackTimer    = null;
+            let playbackReady    = false;
+
+            const btnPlay    = document.getElementById('btn-play');
+            const btnPause   = document.getElementById('btn-pause');
+            const btnBack    = document.getElementById('btn-back');
+            const btnFwd     = document.getElementById('btn-forward');
+            const btnReset   = document.getElementById('btn-reset');
+            const speedSlider= document.getElementById('speed-slider');
+            const stepCounter= document.getElementById('step-counter');
+
+            function getDelay() {
+                // slider 1→10 maps to 1200ms→80ms
+                return Math.round(1280 - speedSlider.value * 120);
+            }
+
+            function setCtrlEnabled(play, pause, back, fwd, reset) {
+                btnPlay .disabled = !play;
+                btnPause.disabled = !pause;
+                btnBack .disabled = !back;
+                btnFwd  .disabled = !fwd;
+                btnReset.disabled = !reset;
+            }
+
+            function updateStepCounter() {
+                stepCounter.textContent = `Step ${playbackStep} / ${playbackExplored.length}`;
+            }
+
+            // Draw explored nodes up to playbackStep index on the graph
+            function renderPlaybackStep() {
+                renderGraph();  // fresh graph (clears highlights)
+                // Colour explored nodes up to current step
+                for (let i = 0; i < playbackStep; i++) {
+                    const id   = playbackExplored[i];
+                    const node = graph.nodes[id];
+                    if (!node) continue;
+                    const isLast = (i === playbackStep - 1);
+                    const pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    pulse.setAttribute("cx", scaleX(node.x));
+                    pulse.setAttribute("cy", scaleY(node.y));
+                    pulse.setAttribute("r", 22);
+                    pulse.setAttribute("fill", isLast ? "rgba(99,102,241,0.35)" : "rgba(6,182,212,0.18)");
+                    pulse.setAttribute("stroke", isLast ? "#818cf8" : "#06b6d4");
+                    pulse.setAttribute("stroke-width", isLast ? "3" : "2");
+                    pulse.setAttribute("class", "path-highlight");
+                    deliveryGraph.appendChild(pulse);
+                }
+                // Once all explored, draw the final path
+                if (playbackStep >= playbackExplored.length && playbackPath.length >= 2) {
+                    visualizePath(playbackPath);
+                    displayResults(playbackPath, playbackTotalW);
+                }
+                updateStepCounter();
+            }
+
+            function stopTimer() {
+                if (playbackTimer) { clearInterval(playbackTimer); playbackTimer = null; }
+            }
+
+            function startPlay() {
+                if (!playbackReady) return;
+                stopTimer();
+                setCtrlEnabled(false, true, false, false, true);
+                playbackTimer = setInterval(() => {
+                    if (playbackStep < playbackExplored.length) {
+                        playbackStep++;
+                        renderPlaybackStep();
+                    } else {
+                        stopTimer();
+                        setCtrlEnabled(false, false, true, false, true);
+                    }
+                }, getDelay());
+            }
+
+            function doPause() {
+                stopTimer();
+                setCtrlEnabled(true, false,
+                    playbackStep > 0,
+                    playbackStep < playbackExplored.length,
+                    true);
+            }
+
+            function doBack() {
+                stopTimer();
+                if (playbackStep > 0) playbackStep--;
+                renderPlaybackStep();
+                setCtrlEnabled(true, false,
+                    playbackStep > 0,
+                    playbackStep < playbackExplored.length,
+                    true);
+            }
+
+            function doForward() {
+                stopTimer();
+                if (playbackStep < playbackExplored.length) playbackStep++;
+                renderPlaybackStep();
+                if (playbackStep >= playbackExplored.length) {
+                    setCtrlEnabled(false, false, true, false, true);
+                } else {
+                    setCtrlEnabled(true, false, true, true, true);
+                }
+            }
+
+            function doReset() {
+                stopTimer();
+                playbackStep = 0;
+                renderGraph();   // clean graph
+                resultsDiv.classList.add('hidden');
+                updateStepCounter();
+                setCtrlEnabled(true, false, false, true, true);
+            }
+
+            btnPlay .addEventListener('click', startPlay);
+            btnPause.addEventListener('click', doPause);
+            btnBack .addEventListener('click', doBack);
+            btnFwd  .addEventListener('click', doForward);
+            btnReset.addEventListener('click', doReset);
+            // Update speed live if playing
+            speedSlider.addEventListener('input', () => {
+                if (playbackTimer) { stopTimer(); startPlay(); }
+            });
+
+            // ─── Main find path function ──────────────────────────────────────────────
             function findShortestPath() {
                 const startId = startPointSelect.value;
-                const endId = endPointSelect.value;
+                const endId   = endPointSelect.value;
                 const selectedAlgo = algorithmSelect.value;
 
-                // Clear previous results and highlights
+                // Clear previous state
+                stopTimer();
+                playbackReady = false;
                 resultsDiv.classList.add('hidden');
                 clearHighlights();
                 algorithmStepsDiv.innerHTML = '';
@@ -895,35 +1107,29 @@
                 });
 
                 let result;
-                if (selectedAlgo === 'dijkstra') {
-                    result = dijkstraWithSteps(adjacencyList, startId);
-                } else if (selectedAlgo === 'astar') {
-                    result = aStarWithSteps(adjacencyList, startId, endId);
-                } else if (selectedAlgo === 'bfs') {
-                    result = bfsWithSteps(adjacencyList, startId);
-                } else if (selectedAlgo === 'dfs') {
-                    result = dfsWithSteps(adjacencyList, startId);
-                } else if (selectedAlgo === 'greedy') {
-                    result = greedyWithSteps(adjacencyList, startId, endId);
-                }
+                if      (selectedAlgo === 'dijkstra') result = dijkstraWithSteps(adjacencyList, startId);
+                else if (selectedAlgo === 'astar')    result = aStarWithSteps(adjacencyList, startId, endId);
+                else if (selectedAlgo === 'bfs')      result = bfsWithSteps(adjacencyList, startId);
+                else if (selectedAlgo === 'dfs')      result = dfsWithSteps(adjacencyList, startId);
+                else if (selectedAlgo === 'greedy')   result = greedyWithSteps(adjacencyList, startId, endId);
 
                 const { previous, steps, explored } = result;
 
-                // Display algorithm steps
+                // Display algorithm steps text
                 steps.forEach(step => {
                     const stepDiv = document.createElement('div');
                     stepDiv.textContent = step;
                     algorithmStepsDiv.appendChild(stepDiv);
                 });
 
-                // Display explored nodes
+                // Display explored nodes text
                 if (explored && explored.length > 0) {
                     pathExploredDiv.textContent = explored.map(id => graph.nodes[id] ? graph.nodes[id].name + ` (${id})` : id).join(' → ');
                 } else {
                     pathExploredDiv.textContent = 'No nodes explored yet';
                 }
 
-                // Reconstruct path from `previous` map
+                // Reconstruct path
                 const path = [];
                 let current = endId;
                 while (current !== null && current !== undefined) {
@@ -940,7 +1146,7 @@
                     return;
                 }
 
-                // Calculate total weight along the found path
+                // Calculate total weight
                 let totalWeight = 0;
                 for (let i = 0; i < path.length - 1; i++) {
                     const edge = graph.edges.find(e =>
@@ -950,8 +1156,18 @@
                     if (edge) totalWeight += edge.weight;
                 }
 
-                visualizePath(path);
-                displayResults(path, totalWeight);
+                // Store for playback
+                playbackExplored = explored;
+                playbackPath     = path;
+                playbackTotalW   = totalWeight;
+                playbackStep     = 0;
+                playbackReady    = true;
+
+                // Enable controls & auto-start play
+                renderGraph();
+                updateStepCounter();
+                setCtrlEnabled(true, false, false, true, true);
+                startPlay();
             }
 
             function dijkstraWithSteps(graph, start) {
