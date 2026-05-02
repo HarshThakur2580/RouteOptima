@@ -284,7 +284,7 @@
         <div class="container mx-auto text-center relative z-10">
             <h1 class="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg tracking-tight">RouteOptima</h1>
             <p class="text-2xl md:text-3xl mb-10 max-w-3xl mx-auto font-light text-white/90">Advanced food delivery path
-                optimization using Dijkstra's algorithm for efficient route planning</p>
+                optimization using Dijkstra's, A*, BFS, DFS &amp; Heuristic algorithms for efficient route planning</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#optimizer"
                     class="bg-white text-indigo-700 px-10 py-5 rounded-2xl font-bold hover:bg-indigo-50 hover:text-indigo-900 transition inline-block shadow-xl pulse-animation text-lg tracking-wide">
@@ -358,7 +358,7 @@
                         <h3 class="text-2xl font-bold text-white">Path Settings</h3>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-10 mb-7">
+                    <div class="grid md:grid-cols-3 gap-6 mb-7">
                         <div>
                             <label class="block text-indigo-200 mb-2 font-semibold">Starting Location</label>
                             <select id="start-point"
@@ -382,6 +382,17 @@
                                 <option value="C5">Customer 5 (C5)</option>
                             </select>
                         </div>
+                        <div>
+                            <label class="block text-indigo-200 mb-2 font-semibold">Search Algorithm</label>
+                            <select id="algorithm-select"
+                                class="dark-input w-full px-5 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
+                                <option value="dijkstra">Dijkstra's (Shortest Path)</option>
+                                <option value="astar">A* (A-Star Search)</option>
+                                <option value="bfs">BFS (Breadth-First)</option>
+                                <option value="dfs">DFS / State Space</option>
+                                <option value="greedy">Heuristic / Greedy</option>
+                            </select>
+                        </div>
                     </div>
 
                     <button id="find-path-btn"
@@ -396,7 +407,7 @@
                         <div class="text-sm text-indigo-200 space-y-1">
                             <p><span class="font-medium">Nodes:</span> 11 locations</p>
                             <p><span class="font-medium">Edges:</span> 15 connections with weights</p>
-                            <p><span class="font-medium">Algorithm:</span> Dijkstra's (shortest weighted path)</p>
+                            <p id="algo-info-text"><span class="font-medium">Algorithm:</span> Dijkstra's (shortest weighted path)</p>
                         </div>
                     </div>
                 </div>
@@ -847,9 +858,26 @@
                 });
             }
 
+            // Algorithm info descriptions
+            const algoDescriptions = {
+                dijkstra: "Dijkstra's (shortest weighted path)",
+                astar: "A* Search (heuristic + cost, optimal)",
+                bfs: "BFS – Breadth-First Search (unweighted)",
+                dfs: "DFS / State Space Search (depth-first)",
+                greedy: "Heuristic / Greedy Best-First Search"
+            };
+
+            const algoInfoText = document.getElementById('algo-info-text');
+            const algorithmSelect = document.getElementById('algorithm-select');
+
+            algorithmSelect.addEventListener('change', () => {
+                algoInfoText.innerHTML = `<span class="font-medium">Algorithm:</span> ${algoDescriptions[algorithmSelect.value]}`;
+            });
+
             function findShortestPath() {
                 const startId = startPointSelect.value;
                 const endId = endPointSelect.value;
+                const selectedAlgo = algorithmSelect.value;
 
                 // Clear previous results and highlights
                 resultsDiv.classList.add('hidden');
@@ -858,19 +886,28 @@
                 const pathExploredDiv = document.getElementById('path-explored');
                 pathExploredDiv.textContent = 'No nodes explored yet';
 
-                // Create adjacency list for Dijkstra's algorithm
+                // Build adjacency list (undirected, weighted)
                 const adjacencyList = {};
-                Object.keys(graph.nodes).forEach(node => {
-                    adjacencyList[node] = [];
-                });
-
+                Object.keys(graph.nodes).forEach(node => { adjacencyList[node] = []; });
                 graph.edges.forEach(edge => {
                     adjacencyList[edge.from].push({ node: edge.to, weight: edge.weight });
-                    adjacencyList[edge.to].push({ node: edge.from, weight: edge.weight }); // Undirected graph
+                    adjacencyList[edge.to].push({ node: edge.from, weight: edge.weight });
                 });
 
-                // Run Dijkstra's algorithm with step logging and explored nodes
-                const { distances, previous, steps, explored } = dijkstraWithSteps(adjacencyList, startId);
+                let result;
+                if (selectedAlgo === 'dijkstra') {
+                    result = dijkstraWithSteps(adjacencyList, startId);
+                } else if (selectedAlgo === 'astar') {
+                    result = aStarWithSteps(adjacencyList, startId, endId);
+                } else if (selectedAlgo === 'bfs') {
+                    result = bfsWithSteps(adjacencyList, startId);
+                } else if (selectedAlgo === 'dfs') {
+                    result = dfsWithSteps(adjacencyList, startId);
+                } else if (selectedAlgo === 'greedy') {
+                    result = greedyWithSteps(adjacencyList, startId, endId);
+                }
+
+                const { previous, steps, explored } = result;
 
                 // Display algorithm steps
                 steps.forEach(step => {
@@ -881,12 +918,12 @@
 
                 // Display explored nodes
                 if (explored && explored.length > 0) {
-                    pathExploredDiv.textContent = explored.map(id => graph.nodes[id].name + ` (${id})`).join(' → ');
+                    pathExploredDiv.textContent = explored.map(id => graph.nodes[id] ? graph.nodes[id].name + ` (${id})` : id).join(' → ');
                 } else {
                     pathExploredDiv.textContent = 'No nodes explored yet';
                 }
 
-                // Reconstruct path
+                // Reconstruct path from `previous` map
                 const path = [];
                 let current = endId;
                 while (current !== null && current !== undefined) {
@@ -895,11 +932,15 @@
                 }
 
                 if (path.length < 2 || path[0] !== startId) {
-                    algorithmStepsDiv.innerHTML += '\nNo path found from ' + startId + ' to ' + endId;
+                    const noPathDiv = document.createElement('div');
+                    noPathDiv.textContent = 'No path found from ' + startId + ' to ' + endId;
+                    algorithmStepsDiv.appendChild(noPathDiv);
+                    resultsDiv.classList.remove('hidden');
+                    pathExploredDiv.textContent = explored.map(id => graph.nodes[id] ? graph.nodes[id].name + ` (${id})` : id).join(' → ');
                     return;
                 }
 
-                // Calculate total weight
+                // Calculate total weight along the found path
                 let totalWeight = 0;
                 for (let i = 0; i < path.length - 1; i++) {
                     const edge = graph.edges.find(e =>
@@ -909,10 +950,7 @@
                     if (edge) totalWeight += edge.weight;
                 }
 
-                // Visualize the path
                 visualizePath(path);
-
-                // Display results
                 displayResults(path, totalWeight);
             }
 
@@ -1046,28 +1084,143 @@
                 return y * deliveryGraph.clientHeight / 100;
             }
 
-            // Priority Queue implementation for Dijkstra's algorithm
+            // ─── Priority Queue (Min-Heap via sort) ───────────────────────────────────
             class PriorityQueue {
-                constructor() {
-                    this.values = [];
-                }
+                constructor() { this.values = []; }
+                enqueue(val, priority) { this.values.push({ val, priority }); this.sort(); }
+                dequeue() { return this.values.shift(); }
+                sort() { this.values.sort((a, b) => a.priority - b.priority); }
+                isEmpty() { return this.values.length === 0; }
+            }
 
-                enqueue(val, priority) {
-                    this.values.push({ val, priority });
-                    this.sort();
-                }
+            // ─── Heuristic: Euclidean distance between two node IDs ───────────────────
+            function heuristic(a, b) {
+                const na = graph.nodes[a], nb = graph.nodes[b];
+                if (!na || !nb) return 0;
+                return Math.sqrt(Math.pow(na.x - nb.x, 2) + Math.pow(na.y - nb.y, 2));
+            }
 
-                dequeue() {
-                    return this.values.shift();
-                }
+            // ─── BFS: Breadth-First Search ────────────────────────────────────────────
+            function bfsWithSteps(adjList, start) {
+                const visited = new Set();
+                const previous = {};
+                const steps = [];
+                const explored = [];
+                const queue = [start];
+                visited.add(start);
+                previous[start] = null;
+                steps.push(`BFS start: Enqueue ${start}`);
 
-                sort() {
-                    this.values.sort((a, b) => a.priority - b.priority);
-                }
+                while (queue.length > 0) {
+                    const node = queue.shift();
+                    explored.push(node);
+                    steps.push(`Dequeue ${node} — neighbours: [${adjList[node].map(n => n.node).join(', ')}]`);
 
-                isEmpty() {
-                    return this.values.length === 0;
+                    for (const { node: neighbour } of adjList[node]) {
+                        if (!visited.has(neighbour)) {
+                            visited.add(neighbour);
+                            previous[neighbour] = node;
+                            queue.push(neighbour);
+                            steps.push(`  → Discovered ${neighbour} via ${node}`);
+                        }
+                    }
                 }
+                return { previous, steps, explored };
+            }
+
+            // ─── DFS: Depth-First Search / State Space Search ─────────────────────────
+            function dfsWithSteps(adjList, start) {
+                const visited = new Set();
+                const previous = {};
+                const steps = [];
+                const explored = [];
+                const stack = [start];
+                previous[start] = null;
+                steps.push(`DFS (State Space) start: Push ${start} onto stack`);
+
+                while (stack.length > 0) {
+                    const node = stack.pop();
+                    if (visited.has(node)) continue;
+                    visited.add(node);
+                    explored.push(node);
+                    steps.push(`Pop ${node} — expanding state`);
+
+                    for (const { node: neighbour } of [...adjList[node]].reverse()) {
+                        if (!visited.has(neighbour)) {
+                            previous[neighbour] = node;
+                            stack.push(neighbour);
+                            steps.push(`  → Push ${neighbour} (reached via ${node})`);
+                        }
+                    }
+                }
+                return { previous, steps, explored };
+            }
+
+            // ─── A* Search ───────────────────────────────────────────────────────────
+            function aStarWithSteps(adjList, start, end) {
+                const gScore = {}; // cost from start
+                const previous = {};
+                const steps = [];
+                const explored = [];
+                const openSet = new PriorityQueue();
+
+                Object.keys(adjList).forEach(n => { gScore[n] = Infinity; previous[n] = null; });
+                gScore[start] = 0;
+                openSet.enqueue(start, 0 + heuristic(start, end));
+                steps.push(`A* start: ${start} | g=0, h=${heuristic(start, end).toFixed(2)}, f=${heuristic(start, end).toFixed(2)}`);
+
+                while (!openSet.isEmpty()) {
+                    const { val: current } = openSet.dequeue();
+                    explored.push(current);
+                    steps.push(`Expand ${current} (g=${gScore[current].toFixed(2)})`);
+
+                    if (current === end) { steps.push(`Reached destination ${end}!`); break; }
+
+                    for (const { node: nb, weight } of adjList[current]) {
+                        const tentativeG = gScore[current] + weight;
+                        if (tentativeG < gScore[nb]) {
+                            gScore[nb] = tentativeG;
+                            previous[nb] = current;
+                            const f = tentativeG + heuristic(nb, end);
+                            openSet.enqueue(nb, f);
+                            steps.push(`  → ${nb}: g=${tentativeG.toFixed(2)}, h=${heuristic(nb, end).toFixed(2)}, f=${f.toFixed(2)}`);
+                        }
+                    }
+                }
+                return { previous, steps, explored };
+            }
+
+            // ─── Greedy Best-First (Heuristic) Search ────────────────────────────────
+            function greedyWithSteps(adjList, start, end) {
+                const visited = new Set();
+                const previous = {};
+                const steps = [];
+                const explored = [];
+                const openSet = new PriorityQueue();
+
+                Object.keys(adjList).forEach(n => { previous[n] = null; });
+                openSet.enqueue(start, heuristic(start, end));
+                steps.push(`Greedy start: ${start} | h=${heuristic(start, end).toFixed(2)}`);
+
+                while (!openSet.isEmpty()) {
+                    const { val: current } = openSet.dequeue();
+                    if (visited.has(current)) continue;
+                    visited.add(current);
+                    explored.push(current);
+                    steps.push(`Expand ${current} (h=${heuristic(current, end).toFixed(2)})`);
+
+                    if (current === end) { steps.push(`Reached destination ${end}!`); break; }
+
+                    for (const { node: nb } of adjList[current]) {
+                        if (!visited.has(nb)) {
+                            previous[nb] = current;
+                            const h = heuristic(nb, end);
+                            openSet.enqueue(nb, h);
+                            steps.push(`  → ${nb}: h=${h.toFixed(2)}`);
+                        }
+                    }
+                }
+                return { previous, steps, explored };
             }
         });
     </script>
