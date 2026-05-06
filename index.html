@@ -340,6 +340,10 @@
                     class="hover:bg-white/10 px-4 py-2 rounded-xl transition flex items-center focus:outline-none focus:ring-2 focus:ring-indigo-200">
                     <i class="fas fa-magic mr-2 text-pink-200"></i> Optimizer
                 </a>
+                <a href="#algorithms"
+                    class="hover:bg-white/10 px-4 py-2 rounded-xl transition flex items-center focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                    <i class="fas fa-brain mr-2 text-cyan-200"></i> Algorithms
+                </a>
                 <a href="#about"
                     class="hover:bg-white/10 px-4 py-2 rounded-xl transition flex items-center focus:outline-none focus:ring-2 focus:ring-indigo-200">
                     <i class="fas fa-info-circle mr-2 text-indigo-100"></i> About
@@ -363,6 +367,10 @@
             <a href="#optimizer"
                 class="block py-3 hover:bg-white/10 rounded-lg transition border-b border-indigo-700 flex items-center">
                 <i class="fas fa-magic mr-3 text-pink-200"></i> Optimizer
+            </a>
+            <a href="#algorithms"
+                class="block py-3 hover:bg-white/10 rounded-lg transition border-b border-indigo-700 flex items-center">
+                <i class="fas fa-brain mr-3 text-cyan-200"></i> Algorithms
             </a>
             <a href="#about" class="block py-3 hover:bg-white/10 rounded-lg transition flex items-center">
                 <i class="fas fa-info-circle mr-3 text-indigo-100"></i> About
@@ -603,6 +611,88 @@
         </div>
     </section>
 
+    <!-- Algorithms Deep Dive Section -->
+    <section id="algorithms" class="py-16 px-4 section-dark">
+        <div class="container mx-auto max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Algorithms Deep Dive</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Understanding the intelligence behind RouteOptima</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <!-- A* -->
+                <div class="dark-card p-8 rounded-2xl border border-indigo-500/30 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10">RECOMMENDED</div>
+                    <div class="text-indigo-400 text-4xl mb-4"><i class="fas fa-star"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">A* Search (A-Star)</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p><strong class="text-white">What:</strong> An advanced, informed search algorithm that finds the shortest path faster than Dijkstra's.</p>
+                        <p><strong class="text-white">How:</strong> Uses Dijkstra's exact cost combined with a "heuristic" (an educated guess, like straight-line distance) to guide the search <em>towards</em> the destination.</p>
+                        <p><strong class="text-white">Why:</strong> Dramatically reduces the number of nodes explored by focusing only on promising paths, saving computational power.</p>
+                        <p><strong class="text-white">Key Points:</strong> Optimal and complete. Extremely fast and efficient.</p>
+                    </div>
+                </div>
+
+                <!-- Dijkstra -->
+                <div class="dark-card p-8 rounded-2xl">
+                    <div class="text-blue-400 text-4xl mb-4"><i class="fas fa-project-diagram"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Dijkstra's Algorithm</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p><strong class="text-white">What:</strong> Finds the absolute shortest path from a starting node to all other nodes in a weighted graph.</p>
+                        <p><strong class="text-white">How:</strong> Explores all possible paths by continuously picking the unvisited node with the lowest accumulated distance from the start.</p>
+                        <p><strong class="text-white">Why:</strong> Guarantees the perfect shortest path when edge weights represent real-world costs (distance, time, fuel).</p>
+                        <p><strong class="text-white">Key Points:</strong> Complete and optimal, but can be slow as it explores equally in all directions (like a ripple in a pond).</p>
+                    </div>
+                </div>
+
+                <!-- BFS -->
+                <div class="dark-card p-8 rounded-2xl">
+                    <div class="text-cyan-400 text-4xl mb-4"><i class="fas fa-water"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">BFS (Breadth-First Search)</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p><strong class="text-white">What:</strong> Explores the network layer by layer, expanding all neighbors before moving deeper.</p>
+                        <p><strong class="text-white">How:</strong> Uses a queue to keep track of nodes. It ignores weights and just counts the number of "hops".</p>
+                        <p><strong class="text-white">Why:</strong> Useful when all edges have equal cost or you just want to find the path with the fewest connections.</p>
+                        <p><strong class="text-white">Key Points:</strong> Optimal only for unweighted graphs. Highly memory-intensive on large networks.</p>
+                    </div>
+                </div>
+
+                <!-- DFS -->
+                <div class="dark-card p-8 rounded-2xl">
+                    <div class="text-purple-400 text-4xl mb-4"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">DFS (Depth-First Search / State Space)</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p><strong class="text-white">What:</strong> Dives as deep as possible down a single path before backtracking.</p>
+                        <p><strong class="text-white">How:</strong> Uses a stack. It picks a neighbor and keeps going until it hits a dead end, then reverses.</p>
+                        <p><strong class="text-white">Why:</strong> Takes up very little memory compared to BFS.</p>
+                        <p><strong class="text-white">Key Points:</strong> Not optimal (rarely finds the shortest path). Can get stuck in deep, useless paths.</p>
+                    </div>
+                </div>
+
+                <!-- Greedy -->
+                <div class="dark-card p-8 rounded-2xl lg:col-span-2">
+                    <div class="text-amber-400 text-4xl mb-4"><i class="fas fa-running"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Heuristic / Greedy Best-First Search</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p><strong class="text-white">What:</strong> Makes the locally optimal choice at each step based <em>only</em> on the estimated distance to the goal.</p>
+                        <p><strong class="text-white">How:</strong> Always moves to the node that looks closest to the destination, ignoring how far it has already traveled.</p>
+                        <p><strong class="text-white">Why:</strong> Incredibly fast because it aggressively bee-lines to the target.</p>
+                        <p><strong class="text-white">Key Points:</strong> Not optimal (can easily get trapped by obstacles or take a longer overall route). Prioritizes speed over perfection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-900/80 to-purple-900/80 p-8 rounded-2xl border border-indigo-500/50 shadow-2xl">
+                <h3 class="text-2xl font-bold mb-4 text-white flex items-center">
+                    <i class="fas fa-trophy text-yellow-400 mr-3"></i> Our Recommendation
+                </h3>
+                <p class="text-lg text-indigo-100 leading-relaxed">
+                    For food delivery and logistics routing like RouteOptima, <strong class="text-white font-bold bg-indigo-600/50 px-2 py-1 rounded">A* Search</strong> is the undisputed champion. It offers the best of both worlds: the mathematical guarantee of finding the absolute shortest path (like Dijkstra's) combined with the blazing speed of a heuristic approach (like Greedy). It avoids exploring irrelevant parts of the city and zeroes in on the customer efficiently.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="py-20 px-4 section-dark">
         <div class="container mx-auto">
@@ -793,6 +883,11 @@
                         <li>
                             <a href="#optimizer" class="flex items-center text-indigo-200 hover:text-white transition">
                                 <i class="fas fa-magic mr-2 text-pink-200"></i> Optimizer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#algorithms" class="flex items-center text-indigo-200 hover:text-white transition">
+                                <i class="fas fa-brain mr-2 text-cyan-200"></i> Algorithms
                             </a>
                         </li>
                         <li>
