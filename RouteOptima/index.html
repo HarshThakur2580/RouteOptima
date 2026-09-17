@@ -139,20 +139,9 @@
         }
 
         @keyframes pulse-ring {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.22);
-                opacity: 0.75;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.22); opacity: 0.75; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .shortcut-line {
@@ -180,9 +169,7 @@
         }
 
         @keyframes flow-heavy {
-            to {
-                stroke-dashoffset: -22;
-            }
+            to { stroke-dashoffset: -22; }
         }
 
         .ch-rank-badge {
@@ -275,17 +262,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.04);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
         }
 
         /* Results panel */
@@ -334,25 +313,11 @@
             cursor: not-allowed;
         }
 
-        .btn-play {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-        }
-
-        .btn-pause {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-        }
-
-        .btn-forward {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-        }
-
-        .btn-reset {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
+        .btn-play { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .btn-pause { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .btn-back { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .btn-forward { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .btn-reset { background: linear-gradient(135deg, #ef4444, #dc2626); }
 
         .speed-label {
             color: #cbd5e1;
@@ -407,20 +372,15 @@
 
 <body class="font-sans antialiased">
     <!-- Navbar -->
-    <nav
-        class="gradient-bg text-white shadow-2xl fixed w-full z-30 backdrop-blur-lg bg-opacity-90 border-b border-indigo-900/40">
+    <nav class="gradient-bg text-white shadow-2xl fixed w-full z-30 backdrop-blur-lg bg-opacity-90 border-b border-indigo-900/40">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div
-                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/30">
                     <i class="fas fa-route text-white text-xl"></i>
                 </div>
                 <div>
-                    <span
-                        class="text-2xl font-extrabold tracking-wide bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 text-transparent">RouteOptima</span>
-                    <span
-                        class="hidden sm:inline-block ml-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">v2.4
-                        PRO</span>
+                    <span class="text-2xl font-extrabold tracking-wide bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 text-transparent">RouteOptima</span>
+                    <span class="hidden sm:inline-block ml-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">v2.4 PRO</span>
                 </div>
             </div>
             <div class="hidden md:flex space-x-7 font-semibold text-base">
@@ -449,26 +409,20 @@
             </button>
         </div>
         <!-- Mobile menu -->
-        <div class="md:hidden hidden bg-indigo-950/95 px-4 py-3 glass-effect shadow-xl rounded-b-2xl border-b border-indigo-700/50"
-            id="mobile-menu">
-            <a href="#home"
-                class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
+        <div class="md:hidden hidden bg-indigo-950/95 px-4 py-3 glass-effect shadow-xl rounded-b-2xl border-b border-indigo-700/50" id="mobile-menu">
+            <a href="#home" class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
                 <i class="fas fa-home mr-3 text-blue-300"></i> Home
             </a>
-            <a href="#how-it-works"
-                class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
+            <a href="#how-it-works" class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
                 <i class="fas fa-cogs mr-3 text-purple-300"></i> How It Works
             </a>
-            <a href="#optimizer"
-                class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
+            <a href="#optimizer" class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
                 <i class="fas fa-bolt mr-3 text-pink-300"></i> Optimizer
             </a>
-            <a href="#algorithms"
-                class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
+            <a href="#algorithms" class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
                 <i class="fas fa-brain mr-3 text-cyan-300"></i> Algorithms
             </a>
-            <a href="#comparison"
-                class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
+            <a href="#comparison" class="block py-2.5 hover:text-cyan-300 transition border-b border-indigo-800/40 flex items-center">
                 <i class="fas fa-chart-bar mr-3 text-amber-300"></i> Benchmark
             </a>
             <a href="#about" class="block py-2.5 hover:text-cyan-300 transition flex items-center">
@@ -488,34 +442,20 @@
             </svg>
         </div>
         <div class="container mx-auto text-center relative z-10 max-w-5xl">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-inner">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-inner">
                 <i class="fas fa-sparkles text-amber-400"></i> Next-Gen Logistics & Food Delivery Engine
             </div>
             <h1 class="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg tracking-tight">RouteOptima</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light text-slate-200 leading-relaxed">
-                Industrial-grade path optimization powered by <span class="font-semibold text-cyan-300">Bidirectional
-                    A*</span>, <span class="font-semibold text-purple-300">Contraction Hierarchies</span>, and <span
-                    class="font-semibold text-amber-300">Dynamic Time-Dependent Routing</span> with real-time traffic
-                simulation.
+                Industrial-grade path optimization powered by <span class="font-semibold text-cyan-300">Bidirectional A*</span>, <span class="font-semibold text-purple-300">Contraction Hierarchies</span>, and <span class="font-semibold text-amber-300">Dynamic Time-Dependent Routing</span> with real-time traffic simulation.
             </p>
 
             <!-- Feature Pills -->
             <div class="flex flex-wrap justify-center gap-2.5 mb-10 text-xs font-semibold max-w-4xl mx-auto">
-                <span
-                    class="bg-indigo-900/60 border border-indigo-500/40 text-indigo-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i
-                        class="fas fa-arrows-split-up-and-left mr-1.5 text-cyan-400"></i> Bidirectional A*
-                    (Dual-Frontier)</span>
-                <span
-                    class="bg-purple-900/60 border border-purple-500/40 text-purple-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i
-                        class="fas fa-layer-group mr-1.5 text-purple-400"></i> Contraction Hierarchies
-                    (Shortcuts)</span>
-                <span
-                    class="bg-amber-900/60 border border-amber-500/40 text-amber-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i
-                        class="fas fa-traffic-light mr-1.5 text-amber-400"></i> Time-Dependent TDSP (Rush Hours)</span>
-                <span
-                    class="bg-emerald-900/60 border border-emerald-500/40 text-emerald-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i
-                        class="fas fa-motorcycle mr-1.5 text-emerald-400"></i> Live Courier Dispatch Sim</span>
+                <span class="bg-indigo-900/60 border border-indigo-500/40 text-indigo-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i class="fas fa-arrows-split-up-and-left mr-1.5 text-cyan-400"></i> Bidirectional A* (Dual-Frontier)</span>
+                <span class="bg-purple-900/60 border border-purple-500/40 text-purple-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i class="fas fa-layer-group mr-1.5 text-purple-400"></i> Contraction Hierarchies (Shortcuts)</span>
+                <span class="bg-amber-900/60 border border-amber-500/40 text-amber-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i class="fas fa-traffic-light mr-1.5 text-amber-400"></i> Time-Dependent TDSP (Rush Hours)</span>
+                <span class="bg-emerald-900/60 border border-emerald-500/40 text-emerald-200 px-3.5 py-1.5 rounded-full flex items-center shadow"><i class="fas fa-motorcycle mr-1.5 text-emerald-400"></i> Live Courier Dispatch Sim</span>
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -536,44 +476,37 @@
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-14">
                 <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">How RouteOptima Works</h2>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto">From spatial delivery modeling to real-time
-                    traffic-aware routing</p>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">From spatial delivery modeling to real-time traffic-aware routing</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
                 <div class="dark-card p-7 rounded-2xl">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 text-2xl mb-5">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 text-2xl mb-5">
                         <i class="fas fa-network-wired"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-white">1. Network Graph Modeling</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Transforms kitchen hubs, distribution centers, and residential destinations into a
-                        directed/undirected weighted graph with coordinates and distance vectors.
+                        Transforms kitchen hubs, distribution centers, and residential destinations into a directed/undirected weighted graph with coordinates and distance vectors.
                     </p>
                 </div>
                 <!-- Feature 2 -->
                 <div class="dark-card p-7 rounded-2xl">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-2xl mb-5">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-2xl mb-5">
                         <i class="fas fa-microchip"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-white">2. Advanced Algorithmic Suite</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Execute 8 state-of-the-art algorithms: Bidirectional A*, Contraction Hierarchies, Dynamic TDSP,
-                        Dijkstra, A*, BFS, DFS, and Greedy Best-First Search.
+                        Execute 8 state-of-the-art algorithms: Bidirectional A*, Contraction Hierarchies, Dynamic TDSP, Dijkstra, A*, BFS, DFS, and Greedy Best-First Search.
                     </p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="dark-card p-7 rounded-2xl">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-2xl mb-5">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-2xl mb-5">
                         <i class="fas fa-route"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-white">3. Dynamic Traffic & Dispatch</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Simulate peak lunch/dinner congestion, inject road incidents, calculate accurate ETAs, and watch
-                        live courier scooter animations along optimal routes.
+                        Simulate peak lunch/dinner congestion, inject road incidents, calculate accurate ETAs, and watch live courier scooter animations along optimal routes.
                     </p>
                 </div>
             </div>
@@ -584,13 +517,10 @@
     <section id="optimizer" class="py-20 px-4 section-dark">
         <div class="container mx-auto max-w-7xl">
             <div class="text-center mb-12">
-                <span
-                    class="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-900/40 border border-indigo-500/30 px-3 py-1 rounded-full">Interactive
-                    Workspace</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 bg-indigo-900/40 border border-indigo-500/30 px-3 py-1 rounded-full">Interactive Workspace</span>
                 <h2 class="text-4xl md:text-5xl font-extrabold mt-3 mb-3 gradient-text">Delivery Route Optimizer</h2>
                 <p class="text-lg text-gray-400 max-w-2xl mx-auto font-light">
-                    Select endpoints, tune algorithmic parameters, simulate live traffic congestion, and visualize the
-                    route
+                    Select endpoints, tune algorithmic parameters, simulate live traffic congestion, and visualize the route
                 </p>
             </div>
 
@@ -598,12 +528,10 @@
             <div class="grid lg:grid-cols-12 gap-8 items-start">
 
                 <!-- LEFT: Control Panel (5 cols) -->
-                <div
-                    class="lg:col-span-5 glass-effect rounded-3xl shadow-2xl p-7 border border-white/10 flex flex-col h-full">
+                <div class="lg:col-span-5 glass-effect rounded-3xl shadow-2xl p-7 border border-white/10 flex flex-col h-full">
                     <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-700/50">
                         <div class="flex items-center">
-                            <div
-                                class="bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 p-2.5 rounded-xl mr-3">
+                            <div class="bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 p-2.5 rounded-xl mr-3">
                                 <i class="fas fa-sliders-h text-lg"></i>
                             </div>
                             <div>
@@ -611,16 +539,14 @@
                                 <p class="text-xs text-gray-400">Configure origin, destination & algorithm</p>
                             </div>
                         </div>
-                        <span id="algo-badge"
-                            class="text-xs px-2.5 py-1 rounded-full font-bold bg-cyan-900/60 text-cyan-300 border border-cyan-600/40">
+                        <span id="algo-badge" class="text-xs px-2.5 py-1 rounded-full font-bold bg-cyan-900/60 text-cyan-300 border border-cyan-600/40">
                             Bi-A* Active
                         </span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label class="block text-indigo-200 mb-1.5 text-xs font-bold uppercase tracking-wide">Pickup
-                                Origin</label>
+                            <label class="block text-indigo-200 mb-1.5 text-xs font-bold uppercase tracking-wide">Pickup Origin</label>
                             <select id="start-point"
                                 class="dark-input w-full px-3.5 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm font-medium">
                                 <option value="R" selected>🍽️ Restaurant (R)</option>
@@ -632,9 +558,7 @@
                             </select>
                         </div>
                         <div>
-                            <label
-                                class="block text-indigo-200 mb-1.5 text-xs font-bold uppercase tracking-wide">Customer
-                                Target</label>
+                            <label class="block text-indigo-200 mb-1.5 text-xs font-bold uppercase tracking-wide">Customer Target</label>
                             <select id="end-point"
                                 class="dark-input w-full px-3.5 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm font-medium">
                                 <option value="C1">👤 Customer 1 (C1)</option>
@@ -647,8 +571,7 @@
                     </div>
 
                     <div class="mb-5">
-                        <label class="block text-indigo-200 mb-1.5 text-xs font-bold uppercase tracking-wide">Routing
-                            Algorithm</label>
+                        <label class="block text-indigo-200 mb-1.5 text-xs font-bold uppercase tracking-wide">Routing Algorithm</label>
                         <select id="algorithm-select"
                             class="dark-input w-full px-3.5 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm font-medium">
                             <option value="bi-astar" selected>✨ Bidirectional A* (Dual-Frontier Heuristic)</option>
@@ -668,17 +591,14 @@
                             <span class="text-xs font-bold text-amber-400 uppercase tracking-wide flex items-center">
                                 <i class="fas fa-traffic-light mr-1.5"></i> Live Traffic Simulation
                             </span>
-                            <span id="traffic-status-badge"
-                                class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-900/60 text-emerald-300 border border-emerald-600/40">
+                            <span id="traffic-status-badge" class="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-emerald-900/60 text-emerald-300 border border-emerald-600/40">
                                 🟢 Free Flow
                             </span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2.5">
                             <div>
-                                <label class="block text-[11px] text-gray-300 mb-1 font-medium">Traffic
-                                    Condition</label>
-                                <select id="traffic-profile-select"
-                                    class="dark-input w-full px-2.5 py-1.5 rounded-lg text-xs">
+                                <label class="block text-[11px] text-gray-300 mb-1 font-medium">Traffic Condition</label>
+                                <select id="traffic-profile-select" class="dark-input w-full px-2.5 py-1.5 rounded-lg text-xs">
                                     <option value="clear" selected>Off-Peak (1.0x Baseline)</option>
                                     <option value="lunch">Lunch Rush 12-2 PM (Kitchens)</option>
                                     <option value="evening">Evening Peak 7-9 PM (Hubs)</option>
@@ -687,8 +607,7 @@
                             </div>
                             <div>
                                 <label class="block text-[11px] text-gray-300 mb-1 font-medium">Dynamic Delays</label>
-                                <button id="btn-toggle-incident"
-                                    class="w-full bg-amber-600/20 hover:bg-amber-600/40 text-amber-300 border border-amber-500/40 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center justify-center">
+                                <button id="btn-toggle-incident" class="w-full bg-amber-600/20 hover:bg-amber-600/40 text-amber-300 border border-amber-500/40 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition flex items-center justify-center">
                                     <i class="fas fa-exclamation-triangle mr-1.5"></i> Inject Delay
                                 </button>
                             </div>
@@ -706,8 +625,7 @@
                             <i class="fas fa-bolt mr-2"></i> Compute Path
                         </button>
                         <button id="simulate-courier-btn"
-                            class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-3 rounded-xl hover:opacity-95 transition text-sm font-bold shadow-lg shadow-emerald-600/30 flex items-center justify-center disabled:opacity-40"
-                            disabled>
+                            class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-3 rounded-xl hover:opacity-95 transition text-sm font-bold shadow-lg shadow-emerald-600/30 flex items-center justify-center disabled:opacity-40" disabled>
                             <i class="fas fa-motorcycle mr-2"></i> Dispatch Courier
                         </button>
                     </div>
@@ -715,17 +633,14 @@
                     <!-- Network Quick Info -->
                     <div class="bg-indigo-950/40 border border-indigo-800/40 rounded-xl p-3.5 mt-auto">
                         <div class="flex justify-between items-center text-xs text-indigo-200">
-                            <span><strong class="text-white">11</strong> Nodes &bull; <strong
-                                    class="text-white">15</strong> Edges</span>
-                            <span id="algo-info-label"
-                                class="text-cyan-300 font-semibold truncate max-w-[200px]">Bidirectional A*</span>
+                            <span><strong class="text-white">11</strong> Nodes &bull; <strong class="text-white">15</strong> Edges</span>
+                            <span id="algo-info-label" class="text-cyan-300 font-semibold truncate max-w-[200px]">Bidirectional A*</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- RIGHT: Graph Visualization (7 cols) -->
-                <div
-                    class="lg:col-span-7 glass-effect rounded-3xl shadow-2xl p-6 border border-white/10 flex flex-col h-full">
+                <div class="lg:col-span-7 glass-effect rounded-3xl shadow-2xl p-6 border border-white/10 flex flex-col h-full">
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
                         <h2 class="text-lg font-bold text-white flex items-center">
                             <i class="fas fa-project-diagram text-indigo-400 mr-2"></i> Delivery Network Graph
@@ -734,14 +649,11 @@
                         <!-- View toggles -->
                         <div class="flex items-center gap-3 text-xs">
                             <label class="inline-flex items-center text-gray-300 cursor-pointer">
-                                <input type="checkbox" id="toggle-ch-ranks"
-                                    class="rounded bg-slate-800 border-slate-700 text-purple-600 focus:ring-0 mr-1.5">
+                                <input type="checkbox" id="toggle-ch-ranks" class="rounded bg-slate-800 border-slate-700 text-purple-600 focus:ring-0 mr-1.5">
                                 <span>CH Ranks</span>
                             </label>
                             <label class="inline-flex items-center text-gray-300 cursor-pointer">
-                                <input type="checkbox" id="toggle-traffic-overlay"
-                                    class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0 mr-1.5"
-                                    checked>
+                                <input type="checkbox" id="toggle-traffic-overlay" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0 mr-1.5" checked>
                                 <span>Traffic Overlay</span>
                             </label>
                         </div>
@@ -772,23 +684,18 @@
                     </div>
 
                     <!-- Courier Simulation Live Banner -->
-                    <div id="courier-banner"
-                        class="hidden mb-3 px-4 py-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex items-center justify-between">
+                    <div id="courier-banner" class="hidden mb-3 px-4 py-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs font-semibold flex items-center justify-between">
                         <span class="flex items-center">
                             <i class="fas fa-motorcycle text-emerald-400 mr-2 text-sm animate-bounce"></i>
                             <span id="courier-status-text">Courier in transit...</span>
                         </span>
-                        <span id="courier-eta-badge"
-                            class="bg-emerald-800/60 px-2 py-0.5 rounded text-[11px] font-bold text-white">ETA:
-                            --</span>
+                        <span id="courier-eta-badge" class="bg-emerald-800/60 px-2 py-0.5 rounded text-[11px] font-bold text-white">ETA: --</span>
                     </div>
 
-                    <div class="graph-container rounded-2xl overflow-hidden flex-1 shadow-inner"
-                        style="min-height: 440px;">
+                    <div class="graph-container rounded-2xl overflow-hidden flex-1 shadow-inner" style="min-height: 440px;">
                         <svg id="delivery-graph" width="100%" height="100%" style="min-height: 440px;">
                             <defs>
-                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5"
-                                    orient="auto">
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                                     <polygon points="0 0, 10 3.5, 0 7" class="marker-arrow" />
                                 </marker>
                             </defs>
@@ -796,27 +703,18 @@
                     </div>
 
                     <!-- Visual Legend -->
-                    <div
-                        class="mt-4 pt-3 border-t border-slate-700/50 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-300">
+                    <div class="mt-4 pt-3 border-t border-slate-700/50 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-300">
                         <div class="flex flex-wrap items-center gap-3">
-                            <span class="flex items-center"><span
-                                    class="w-3 h-3 rounded-full bg-[#f59e0b] mr-1.5 inline-block"></span>Restaurant</span>
-                            <span class="flex items-center"><span
-                                    class="w-3 h-3 rounded-full bg-[#06b6d4] mr-1.5 inline-block"></span>Kitchen</span>
-                            <span class="flex items-center"><span
-                                    class="w-3 h-3 rounded-full bg-[#818cf8] mr-1.5 inline-block"></span>Distribution</span>
-                            <span class="flex items-center"><span
-                                    class="w-3 h-3 rounded-full bg-[#a855f7] mr-1.5 inline-block"></span>Hub</span>
-                            <span class="flex items-center"><span
-                                    class="w-3 h-3 rounded-full bg-[#60a5fa] mr-1.5 inline-block"></span>Customer</span>
+                            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#f59e0b] mr-1.5 inline-block"></span>Restaurant</span>
+                            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#06b6d4] mr-1.5 inline-block"></span>Kitchen</span>
+                            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#818cf8] mr-1.5 inline-block"></span>Distribution</span>
+                            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#a855f7] mr-1.5 inline-block"></span>Hub</span>
+                            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#60a5fa] mr-1.5 inline-block"></span>Customer</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-2.5 font-medium">
-                            <span class="text-cyan-400 flex items-center"><span
-                                    class="w-2.5 h-2.5 rounded-full border border-cyan-400 bg-cyan-400/30 mr-1"></span>Forward</span>
-                            <span class="text-pink-400 flex items-center"><span
-                                    class="w-2.5 h-2.5 rounded-full border border-pink-400 bg-pink-400/30 mr-1"></span>Backward</span>
-                            <span class="text-amber-400 flex items-center"><span
-                                    class="w-2.5 h-2.5 rounded-full border border-amber-400 bg-amber-400/40 mr-1"></span>Peak/Meeting</span>
+                            <span class="text-cyan-400 flex items-center"><span class="w-2.5 h-2.5 rounded-full border border-cyan-400 bg-cyan-400/30 mr-1"></span>Forward</span>
+                            <span class="text-pink-400 flex items-center"><span class="w-2.5 h-2.5 rounded-full border border-pink-400 bg-pink-400/30 mr-1"></span>Backward</span>
+                            <span class="text-amber-400 flex items-center"><span class="w-2.5 h-2.5 rounded-full border border-amber-400 bg-amber-400/40 mr-1"></span>Peak/Meeting</span>
                         </div>
                     </div>
                 </div>
@@ -828,38 +726,31 @@
                     <h2 class="text-2xl font-bold text-white flex items-center">
                         <i class="fas fa-chart-line text-cyan-400 mr-2.5"></i> Route Optimization Metrics
                     </h2>
-                    <div id="results-algo-tag"
-                        class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                    <div id="results-algo-tag" class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
                         Bidirectional A*
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <div class="bg-indigo-950/40 p-4 rounded-xl border border-indigo-800/60">
-                        <div class="text-xs text-indigo-300 font-semibold uppercase tracking-wider">Total Route Cost
-                        </div>
+                        <div class="text-xs text-indigo-300 font-semibold uppercase tracking-wider">Total Route Cost</div>
                         <div id="total-weight" class="text-2xl font-black text-white mt-1">0</div>
                         <div class="text-[11px] text-indigo-300/80 mt-0.5">Base distance weight units</div>
                     </div>
                     <div class="bg-amber-950/40 p-4 rounded-xl border border-amber-800/60">
                         <div class="text-xs text-amber-300 font-semibold uppercase tracking-wider">Dynamic ETA</div>
                         <div id="delivery-time" class="text-2xl font-black text-white mt-1">0 min</div>
-                        <div id="traffic-delay-indicator" class="text-[11px] text-amber-300/80 mt-0.5">Off-peak speed
-                        </div>
+                        <div id="traffic-delay-indicator" class="text-[11px] text-amber-300/80 mt-0.5">Off-peak speed</div>
                     </div>
                     <div class="bg-cyan-950/40 p-4 rounded-xl border border-cyan-800/60">
-                        <div class="text-xs text-cyan-300 font-semibold uppercase tracking-wider">Exploration Efficiency
-                        </div>
+                        <div class="text-xs text-cyan-300 font-semibold uppercase tracking-wider">Exploration Efficiency</div>
                         <div id="metric-efficiency" class="text-2xl font-black text-white mt-1">0 nodes</div>
-                        <div id="efficiency-savings" class="text-[11px] text-cyan-300/80 mt-0.5">Frontier vs network
-                            size</div>
+                        <div id="efficiency-savings" class="text-[11px] text-cyan-300/80 mt-0.5">Frontier vs network size</div>
                     </div>
                     <div class="bg-purple-950/40 p-4 rounded-xl border border-purple-800/60">
-                        <div class="text-xs text-purple-300 font-semibold uppercase tracking-wider">Key Node Milestone
-                        </div>
+                        <div class="text-xs text-purple-300 font-semibold uppercase tracking-wider">Key Node Milestone</div>
                         <div id="metric-milestone" class="text-2xl font-black text-white mt-1">-</div>
-                        <div id="metric-milestone-desc" class="text-[11px] text-purple-300/80 mt-0.5">Algorithm
-                            intersection</div>
+                        <div id="metric-milestone-desc" class="text-[11px] text-purple-300/80 mt-0.5">Algorithm intersection</div>
                     </div>
                 </div>
 
@@ -901,73 +792,50 @@
     <section id="algorithms" class="py-20 px-4 section-dark">
         <div class="container mx-auto max-w-7xl">
             <div class="text-center mb-16">
-                <span
-                    class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-900/40 border border-cyan-500/30 px-3 py-1 rounded-full">Algorithmic
-                    Intelligence</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-900/40 border border-cyan-500/30 px-3 py-1 rounded-full">Algorithmic Intelligence</span>
                 <h2 class="text-3xl md:text-5xl font-extrabold mt-3 mb-4 gradient-text">Algorithms Deep Dive</h2>
                 <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-                    Explore the theoretical foundations, algorithmic mechanics, and logistics advantages of our 8 search
-                    & optimization engines.
+                    Explore the theoretical foundations, algorithmic mechanics, and logistics advantages of our 8 search & optimization engines.
                 </p>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8 mb-12">
                 <!-- Bidirectional A* -->
                 <div class="dark-card p-7 rounded-2xl border border-cyan-500/40 relative overflow-hidden flex flex-col">
-                    <div
-                        class="absolute top-0 right-0 bg-gradient-to-l from-cyan-600 to-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-lg">
-                        NEW &bull; ADVANCED</div>
+                    <div class="absolute top-0 right-0 bg-gradient-to-l from-cyan-600 to-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-lg">NEW &bull; ADVANCED</div>
                     <div class="text-cyan-400 text-3xl mb-3"><i class="fas fa-arrows-split-up-and-left"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Bidirectional A*</h3>
                     <div class="space-y-2.5 text-gray-300 text-xs leading-relaxed flex-1">
-                        <p><strong class="text-white">What:</strong> Searches simultaneously from the start forward and
-                            destination backward until frontiers collide.</p>
-                        <p><strong class="text-white">How:</strong> Combines dual min-heaps with Euclidean distance
-                            heuristics ($g_F+h_F$ and $g_B+h_B$). Stops when $\min f_F + \min f_B \ge \mu$.</p>
-                        <p><strong class="text-white">Why:</strong> Slashes search radius by half ($r/2$), reducing the
-                            explored state space by up to <strong class="text-cyan-300">75%</strong>.</p>
-                        <p><strong class="text-white">Food Delivery Role:</strong> Rapid dispatch between long-distance
-                            suburban fulfillment hubs and urban consumers.</p>
+                        <p><strong class="text-white">What:</strong> Searches simultaneously from the start forward and destination backward until frontiers collide.</p>
+                        <p><strong class="text-white">How:</strong> Combines dual min-heaps with Euclidean distance heuristics ($g_F+h_F$ and $g_B+h_B$). Stops when $\min f_F + \min f_B \ge \mu$.</p>
+                        <p><strong class="text-white">Why:</strong> Slashes search radius by half ($r/2$), reducing the explored state space by up to <strong class="text-cyan-300">75%</strong>.</p>
+                        <p><strong class="text-white">Food Delivery Role:</strong> Rapid dispatch between long-distance suburban fulfillment hubs and urban consumers.</p>
                     </div>
                 </div>
 
                 <!-- Contraction Hierarchies -->
-                <div
-                    class="dark-card p-7 rounded-2xl border border-purple-500/40 relative overflow-hidden flex flex-col">
-                    <div
-                        class="absolute top-0 right-0 bg-gradient-to-l from-purple-600 to-pink-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-lg">
-                        STATE-OF-THE-ART</div>
+                <div class="dark-card p-7 rounded-2xl border border-purple-500/40 relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gradient-to-l from-purple-600 to-pink-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-lg">STATE-OF-THE-ART</div>
                     <div class="text-purple-400 text-3xl mb-3"><i class="fas fa-layer-group"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Contraction Hierarchies (CH)</h3>
                     <div class="space-y-2.5 text-gray-300 text-xs leading-relaxed flex-1">
-                        <p><strong class="text-white">What:</strong> The industrial gold standard used in mapping
-                            engines (OSRM, GraphHopper) for instant queries.</p>
-                        <p><strong class="text-white">How:</strong> Preprocesses nodes by transit importance (ranking),
-                            inserting shortcuts. Queries only traverse upwards in rank ($rank(v) > rank(u)$).</p>
-                        <p><strong class="text-white">Why:</strong> Query explores merely a fraction of the graph while
-                            mathematically guaranteeing absolute shortest distance.</p>
-                        <p><strong class="text-white">Food Delivery Role:</strong> Instant batch routing across millions
-                            of delivery corridors without server bottlenecks.</p>
+                        <p><strong class="text-white">What:</strong> The industrial gold standard used in mapping engines (OSRM, GraphHopper) for instant queries.</p>
+                        <p><strong class="text-white">How:</strong> Preprocesses nodes by transit importance (ranking), inserting shortcuts. Queries only traverse upwards in rank ($rank(v) > rank(u)$).</p>
+                        <p><strong class="text-white">Why:</strong> Query explores merely a fraction of the graph while mathematically guaranteeing absolute shortest distance.</p>
+                        <p><strong class="text-white">Food Delivery Role:</strong> Instant batch routing across millions of delivery corridors without server bottlenecks.</p>
                     </div>
                 </div>
 
                 <!-- Dynamic / Time-Dependent Routing -->
-                <div
-                    class="dark-card p-7 rounded-2xl border border-amber-500/40 relative overflow-hidden flex flex-col">
-                    <div
-                        class="absolute top-0 right-0 bg-gradient-to-l from-amber-600 to-red-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-lg">
-                        REAL-WORLD RELEVANT</div>
+                <div class="dark-card p-7 rounded-2xl border border-amber-500/40 relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-600 to-red-600 text-white text-[10px] font-black px-3 py-1 rounded-bl-lg">REAL-WORLD RELEVANT</div>
                     <div class="text-amber-400 text-3xl mb-3"><i class="fas fa-traffic-light"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Dynamic TDSP Routing</h3>
                     <div class="space-y-2.5 text-gray-300 text-xs leading-relaxed flex-1">
-                        <p><strong class="text-white">What:</strong> Time-Dependent Shortest Path routing that accounts
-                            for hour-by-hour traffic surges and road incidents.</p>
-                        <p><strong class="text-white">How:</strong> Edge costs $c(e, t)$ depend continuously on arrival
-                            time $t$. Uses FIFO cost projection to dynamically detour around congested arteries.</p>
-                        <p><strong class="text-white">Why:</strong> Static shortest distance often creates late
-                            deliveries during peak lunch and dinner rush hours.</p>
-                        <p><strong class="text-white">Food Delivery Role:</strong> Keeps food hot by dynamically routing
-                            couriers around bottlenecks and unexpected road delays.</p>
+                        <p><strong class="text-white">What:</strong> Time-Dependent Shortest Path routing that accounts for hour-by-hour traffic surges and road incidents.</p>
+                        <p><strong class="text-white">How:</strong> Edge costs $c(e, t)$ depend continuously on arrival time $t$. Uses FIFO cost projection to dynamically detour around congested arteries.</p>
+                        <p><strong class="text-white">Why:</strong> Static shortest distance often creates late deliveries during peak lunch and dinner rush hours.</p>
+                        <p><strong class="text-white">Food Delivery Role:</strong> Keeps food hot by dynamically routing couriers around bottlenecks and unexpected road delays.</p>
                     </div>
                 </div>
 
@@ -976,12 +844,9 @@
                     <div class="text-indigo-400 text-3xl mb-3"><i class="fas fa-star"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">A* Search (Unidirectional)</h3>
                     <div class="space-y-2.5 text-gray-300 text-xs leading-relaxed flex-1">
-                        <p><strong class="text-white">What:</strong> Informed heuristic search algorithm guiding
-                            Dijkstra toward the target.</p>
-                        <p><strong class="text-white">How:</strong> Minimizes $f(n) = g(n) + h(n)$, combining exact cost
-                            with Euclidean straight-line distance.</p>
-                        <p><strong class="text-white">Why:</strong> Drastically reduces visited nodes compared to
-                            Dijkstra while guaranteeing optimality.</p>
+                        <p><strong class="text-white">What:</strong> Informed heuristic search algorithm guiding Dijkstra toward the target.</p>
+                        <p><strong class="text-white">How:</strong> Minimizes $f(n) = g(n) + h(n)$, combining exact cost with Euclidean straight-line distance.</p>
+                        <p><strong class="text-white">Why:</strong> Drastically reduces visited nodes compared to Dijkstra while guaranteeing optimality.</p>
                     </div>
                 </div>
 
@@ -990,12 +855,9 @@
                     <div class="text-blue-400 text-3xl mb-3"><i class="fas fa-project-diagram"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Dijkstra's Algorithm</h3>
                     <div class="space-y-2.5 text-gray-300 text-xs leading-relaxed flex-1">
-                        <p><strong class="text-white">What:</strong> The foundational greedy algorithm for weighted
-                            shortest paths.</p>
-                        <p><strong class="text-white">How:</strong> Continuously extracts lowest-cost unvisited vertices
-                            using a min-priority queue.</p>
-                        <p><strong class="text-white">Why:</strong> Guarantees optimal path, but explores uniformly in
-                            all directions like a ripple.</p>
+                        <p><strong class="text-white">What:</strong> The foundational greedy algorithm for weighted shortest paths.</p>
+                        <p><strong class="text-white">How:</strong> Continuously extracts lowest-cost unvisited vertices using a min-priority queue.</p>
+                        <p><strong class="text-white">Why:</strong> Guarantees optimal path, but explores uniformly in all directions like a ripple.</p>
                     </div>
                 </div>
 
@@ -1004,12 +866,9 @@
                     <div class="text-emerald-400 text-3xl mb-3"><i class="fas fa-running"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Greedy Best-First Search</h3>
                     <div class="space-y-2.5 text-gray-300 text-xs leading-relaxed flex-1">
-                        <p><strong class="text-white">What:</strong> Aggressively advances toward the destination using
-                            only the heuristic estimate $h(n)$.</p>
-                        <p><strong class="text-white">How:</strong> Ignores cost already traveled ($g(n) = 0$), seeking
-                            immediate progress.</p>
-                        <p><strong class="text-white">Why:</strong> Extremely fast but not optimal; can fall into
-                            detours if blocked by obstacles.</p>
+                        <p><strong class="text-white">What:</strong> Aggressively advances toward the destination using only the heuristic estimate $h(n)$.</p>
+                        <p><strong class="text-white">How:</strong> Ignores cost already traveled ($g(n) = 0$), seeking immediate progress.</p>
+                        <p><strong class="text-white">Why:</strong> Extremely fast but not optimal; can fall into detours if blocked by obstacles.</p>
                     </div>
                 </div>
             </div>
@@ -1020,14 +879,10 @@
     <section id="comparison" class="py-16 px-4 section-dark border-t border-slate-800">
         <div class="container mx-auto max-w-7xl">
             <div class="text-center mb-12">
-                <span
-                    class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-900/40 border border-amber-500/30 px-3 py-1 rounded-full">Comparative
-                    Benchmark</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold mt-3 mb-3 gradient-text">Algorithm Performance Matrix
-                </h2>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-900/40 border border-amber-500/30 px-3 py-1 rounded-full">Comparative Benchmark</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mt-3 mb-3 gradient-text">Algorithm Performance Matrix</h2>
                 <p class="text-base text-gray-400 max-w-2xl mx-auto font-light">
-                    Comprehensive technical comparison of algorithmic complexity, guarantees, and food delivery
-                    use-cases.
+                    Comprehensive technical comparison of algorithmic complexity, guarantees, and food delivery use-cases.
                 </p>
             </div>
 
@@ -1050,78 +905,66 @@
                                 <i class="fas fa-arrows-split-up-and-left mr-2"></i> Bidirectional A*
                             </td>
                             <td class="py-3.5 px-3">Dual-Frontier Heuristic</td>
-                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i>
-                                Guaranteed</td>
+                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i> Guaranteed</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O(b^(d/2))</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">None</td>
-                            <td class="py-3.5 px-4 text-slate-300">Long-haul suburban courier routes with large
-                                geographical separation</td>
+                            <td class="py-3.5 px-4 text-slate-300">Long-haul suburban courier routes with large geographical separation</td>
                         </tr>
                         <tr class="hover:bg-purple-950/30 transition">
                             <td class="py-3.5 px-4 text-purple-300 font-bold flex items-center">
                                 <i class="fas fa-layer-group mr-2"></i> Contraction Hierarchies
                             </td>
                             <td class="py-3.5 px-3">Node Ordering + Shortcuts</td>
-                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i>
-                                Guaranteed</td>
+                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i> Guaranteed</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O((V'+E') log V') &lt;&lt; Dijkstra</td>
                             <td class="py-3.5 px-3 font-mono">O(V + E + Shortcuts)</td>
                             <td class="py-3.5 px-3 text-purple-300 font-semibold">One-time O(V log V + E)</td>
-                            <td class="py-3.5 px-4 text-slate-300">Nationwide fleet routing engines & batch dispatching
-                                across massive networks</td>
+                            <td class="py-3.5 px-4 text-slate-300">Nationwide fleet routing engines & batch dispatching across massive networks</td>
                         </tr>
                         <tr class="hover:bg-amber-950/30 transition">
                             <td class="py-3.5 px-4 text-amber-300 font-bold flex items-center">
                                 <i class="fas fa-traffic-light mr-2"></i> Dynamic TDSP Routing
                             </td>
                             <td class="py-3.5 px-3">Time-Dependent FIFO Cost</td>
-                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i>
-                                Time-Optimal</td>
+                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i> Time-Optimal</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O((V + E) log V)</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">Traffic Profiles</td>
-                            <td class="py-3.5 px-4 text-slate-300">Peak dining rush hour detours & live accident
-                                rerouting for courier fleet</td>
+                            <td class="py-3.5 px-4 text-slate-300">Peak dining rush hour detours & live accident rerouting for courier fleet</td>
                         </tr>
                         <tr class="hover:bg-indigo-950/30 transition">
                             <td class="py-3.5 px-4 text-indigo-300 font-bold flex items-center">
                                 <i class="fas fa-star mr-2"></i> A* Search
                             </td>
                             <td class="py-3.5 px-3">Heuristic Cost Function</td>
-                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i>
-                                Guaranteed</td>
+                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i> Guaranteed</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O(E) best &bull; O((V+E) log V)</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">None</td>
-                            <td class="py-3.5 px-4 text-slate-300">Standard single-delivery point-to-point urban food
-                                dispatch</td>
+                            <td class="py-3.5 px-4 text-slate-300">Standard single-delivery point-to-point urban food dispatch</td>
                         </tr>
                         <tr class="hover:bg-indigo-950/30 transition">
                             <td class="py-3.5 px-4 text-blue-300 font-bold flex items-center">
                                 <i class="fas fa-project-diagram mr-2"></i> Dijkstra's Algorithm
                             </td>
                             <td class="py-3.5 px-3">Greedy Cost Relaxation</td>
-                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i>
-                                Guaranteed</td>
+                            <td class="py-3.5 px-3 text-emerald-400 font-semibold"><i class="fas fa-check mr-1"></i> Guaranteed</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O((V + E) log V)</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">None</td>
-                            <td class="py-3.5 px-4 text-slate-300">All-pairs hub-to-distribution centers baseline
-                                distance calculation</td>
+                            <td class="py-3.5 px-4 text-slate-300">All-pairs hub-to-distribution centers baseline distance calculation</td>
                         </tr>
                         <tr class="hover:bg-indigo-950/30 transition">
                             <td class="py-3.5 px-4 text-amber-200 font-bold flex items-center">
                                 <i class="fas fa-running mr-2"></i> Greedy Best-First
                             </td>
                             <td class="py-3.5 px-3">Pure Heuristic Greedy</td>
-                            <td class="py-3.5 px-3 text-red-400 font-semibold"><i class="fas fa-times mr-1"></i> Not
-                                Guaranteed</td>
+                            <td class="py-3.5 px-3 text-red-400 font-semibold"><i class="fas fa-times mr-1"></i> Not Guaranteed</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O(b^m)</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">None</td>
-                            <td class="py-3.5 px-4 text-slate-300">Ultra-fast heuristic rough-cut delivery time
-                                approximation</td>
+                            <td class="py-3.5 px-4 text-slate-300">Ultra-fast heuristic rough-cut delivery time approximation</td>
                         </tr>
                         <tr class="hover:bg-indigo-950/30 transition">
                             <td class="py-3.5 px-4 text-cyan-200 font-bold flex items-center">
@@ -1132,21 +975,18 @@
                             <td class="py-3.5 px-3 font-mono text-gray-200">O(V + E)</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">None</td>
-                            <td class="py-3.5 px-4 text-slate-300">Minimizing transfer hops between logistics
-                                fulfillment hubs</td>
+                            <td class="py-3.5 px-4 text-slate-300">Minimizing transfer hops between logistics fulfillment hubs</td>
                         </tr>
                         <tr class="hover:bg-indigo-950/30 transition">
                             <td class="py-3.5 px-4 text-purple-200 font-bold flex items-center">
                                 <i class="fas fa-layer-group mr-2"></i> DFS Search
                             </td>
                             <td class="py-3.5 px-3">LIFO Stack / Backtrack</td>
-                            <td class="py-3.5 px-3 text-red-400 font-semibold"><i class="fas fa-times mr-1"></i> Not
-                                Guaranteed</td>
+                            <td class="py-3.5 px-3 text-red-400 font-semibold"><i class="fas fa-times mr-1"></i> Not Guaranteed</td>
                             <td class="py-3.5 px-3 font-mono text-gray-200">O(V + E)</td>
                             <td class="py-3.5 px-3 font-mono">O(V)</td>
                             <td class="py-3.5 px-3 text-gray-400">None</td>
-                            <td class="py-3.5 px-4 text-slate-300">Network reachability validation & delivery zone
-                                connectivity tests</td>
+                            <td class="py-3.5 px-4 text-slate-300">Network reachability validation & delivery zone connectivity tests</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1159,64 +999,46 @@
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2">
-                    <span
-                        class="inline-block px-3.5 py-1 text-xs font-bold text-indigo-300 bg-indigo-900/40 border border-indigo-700/50 rounded-full mb-4">
+                    <span class="inline-block px-3.5 py-1 text-xs font-bold text-indigo-300 bg-indigo-900/40 border border-indigo-700/50 rounded-full mb-4">
                         ABOUT ROUTEOPTIMA
                     </span>
                     <h2 class="text-3xl md:text-4xl font-extrabold mb-5 gradient-text">
                         Enterprise-Grade Path Optimization for Delivery Operations
                     </h2>
                     <p class="text-gray-300 mb-4 text-sm leading-relaxed">
-                        RouteOptima is an advanced path optimization platform developed to solve real-world urban
-                        logistics and food delivery bottlenecks. By integrating advanced shortest-path graph theory with
-                        real-time dynamic traffic simulation, RouteOptima ensures rapid, accurate, and energy-efficient
-                        route planning.
+                        RouteOptima is an advanced path optimization platform developed to solve real-world urban logistics and food delivery bottlenecks. By integrating advanced shortest-path graph theory with real-time dynamic traffic simulation, RouteOptima ensures rapid, accurate, and energy-efficient route planning.
                     </p>
                     <p class="text-gray-300 mb-4 text-sm leading-relaxed">
-                        The engine models transit infrastructure as an augmented graph, dynamically adjusting for rush
-                        hours, traffic incidents, and courier velocity to minimize customer wait times and maximize
-                        courier delivery throughput.
+                        The engine models transit infrastructure as an augmented graph, dynamically adjusting for rush hours, traffic incidents, and courier velocity to minimize customer wait times and maximize courier delivery throughput.
                     </p>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Developed as part of academic research in Computer Science & Graph Algorithms to showcase modern
-                        optimization techniques in delivery logistics.
+                        Developed as part of academic research in Computer Science & Graph Algorithms to showcase modern optimization techniques in delivery logistics.
                     </p>
                 </div>
                 <div class="md:w-1/2">
-                    <div
-                        class="bg-indigo-950/40 p-7 rounded-2xl border border-indigo-700/60 shadow-xl space-y-3.5 text-xs">
+                    <div class="bg-indigo-950/40 p-7 rounded-2xl border border-indigo-700/60 shadow-xl space-y-3.5 text-xs">
                         <h3 class="text-base font-bold text-white mb-2 flex items-center">
                             <i class="fas fa-check-double text-cyan-400 mr-2"></i> Key Platform Capabilities
                         </h3>
                         <div class="flex items-start">
-                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i
-                                    class="fas fa-check text-green-400 text-[10px]"></i></div>
-                            <span class="text-gray-300"><strong class="text-white">Dual-Frontier Heuristic
-                                    Search:</strong> Bidirectional A* reduces explored nodes by up to 75%.</span>
+                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i class="fas fa-check text-green-400 text-[10px]"></i></div>
+                            <span class="text-gray-300"><strong class="text-white">Dual-Frontier Heuristic Search:</strong> Bidirectional A* reduces explored nodes by up to 75%.</span>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i
-                                    class="fas fa-check text-green-400 text-[10px]"></i></div>
-                            <span class="text-gray-300"><strong class="text-white">Contraction Hierarchies:</strong>
-                                Fast hierarchical routing with shortcut preprocessing.</span>
+                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i class="fas fa-check text-green-400 text-[10px]"></i></div>
+                            <span class="text-gray-300"><strong class="text-white">Contraction Hierarchies:</strong> Fast hierarchical routing with shortcut preprocessing.</span>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i
-                                    class="fas fa-check text-green-400 text-[10px]"></i></div>
-                            <span class="text-gray-300"><strong class="text-white">Dynamic Time-Dependent
-                                    Routing:</strong> Adapts routes to peak rush hours & live delays.</span>
+                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i class="fas fa-check text-green-400 text-[10px]"></i></div>
+                            <span class="text-gray-300"><strong class="text-white">Dynamic Time-Dependent Routing:</strong> Adapts routes to peak rush hours & live delays.</span>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i
-                                    class="fas fa-check text-green-400 text-[10px]"></i></div>
-                            <span class="text-gray-300"><strong class="text-white">Courier Dispatch Simulation:</strong>
-                                Live animated delivery scooter with accurate ETA countdown.</span>
+                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i class="fas fa-check text-green-400 text-[10px]"></i></div>
+                            <span class="text-gray-300"><strong class="text-white">Courier Dispatch Simulation:</strong> Live animated delivery scooter with accurate ETA countdown.</span>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i
-                                    class="fas fa-check text-green-400 text-[10px]"></i></div>
-                            <span class="text-gray-300"><strong class="text-white">Zero-Build Client
-                                    Architecture:</strong> Pure vanilla HTML5/SVG/JS running natively in browser.</span>
+                            <div class="bg-indigo-700/80 p-1 rounded-full mr-2.5 mt-0.5"><i class="fas fa-check text-green-400 text-[10px]"></i></div>
+                            <span class="text-gray-300"><strong class="text-white">Zero-Build Client Architecture:</strong> Pure vanilla HTML5/SVG/JS running natively in browser.</span>
                         </div>
                     </div>
                 </div>
@@ -1228,9 +1050,7 @@
     <section id="team" class="py-16 px-4 section-dark">
         <div class="container mx-auto max-w-5xl">
             <div class="text-center mb-14">
-                <span
-                    class="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-900/40 border border-purple-500/30 px-3 py-1 rounded-full">Project
-                    Authors</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-900/40 border border-purple-500/30 px-3 py-1 rounded-full">Project Authors</span>
                 <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-2 text-white">Quantam Code Team</h2>
                 <p class="text-sm text-gray-400">Department of Computer Science &amp; Engineering</p>
             </div>
@@ -1238,20 +1058,17 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Team Member 1 -->
                 <div class="dark-card p-6 rounded-2xl text-center">
-                    <div
-                        class="w-20 h-20 mx-auto mb-4 rounded-full bg-indigo-900/60 flex items-center justify-center border border-indigo-500/40 shadow-inner">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-indigo-900/60 flex items-center justify-center border border-indigo-500/40 shadow-inner">
                         <i class="fas fa-user-astronaut text-indigo-400 text-2xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white">Harsh Ranjan</h3>
                     <p class="text-indigo-300 text-xs font-semibold mb-1">Developer</p>
                     <p class="text-indigo-400 text-[11px] mb-3">Reg: 12412256</p>
                     <div class="flex justify-center space-x-3 text-sm">
-                        <a href="https://github.com/HarshThakur2580/RouteOptima" target="_blank" rel="noopener"
-                            class="text-indigo-400 hover:text-white transition">
+                        <a href="https://github.com/HarshThakur2580/RouteOptima" target="_blank" rel="noopener" class="text-indigo-400 hover:text-white transition">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/harshranjan2580" target="_blank" rel="noopener"
-                            class="text-indigo-400 hover:text-white transition">
+                        <a href="https://www.linkedin.com/in/harshranjan2580" target="_blank" rel="noopener" class="text-indigo-400 hover:text-white transition">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -1259,20 +1076,17 @@
 
                 <!-- Team Member 2 -->
                 <div class="dark-card p-6 rounded-2xl text-center">
-                    <div
-                        class="w-20 h-20 mx-auto mb-4 rounded-full bg-cyan-900/60 flex items-center justify-center border border-cyan-500/40 shadow-inner">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-cyan-900/60 flex items-center justify-center border border-cyan-500/40 shadow-inner">
                         <i class="fas fa-user-ninja text-cyan-400 text-2xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white">Prince Thakur</h3>
                     <p class="text-cyan-300 text-xs font-semibold mb-1">Developer</p>
                     <p class="text-cyan-400 text-[11px] mb-3">Reg: 12412368</p>
                     <div class="flex justify-center space-x-3 text-sm">
-                        <a href="https://github.com/Princethakur9170" target="_blank" rel="noopener"
-                            class="text-cyan-400 hover:text-white transition">
+                        <a href="https://github.com/Princethakur9170" target="_blank" rel="noopener" class="text-cyan-400 hover:text-white transition">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/princethakur9170" target="_blank" rel="noopener"
-                            class="text-cyan-400 hover:text-white transition">
+                        <a href="https://www.linkedin.com/in/princethakur9170" target="_blank" rel="noopener" class="text-cyan-400 hover:text-white transition">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -1280,20 +1094,17 @@
 
                 <!-- Team Member 3 -->
                 <div class="dark-card p-6 rounded-2xl text-center">
-                    <div
-                        class="w-20 h-20 mx-auto mb-4 rounded-full bg-purple-900/60 flex items-center justify-center border border-purple-500/40 shadow-inner">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-purple-900/60 flex items-center justify-center border border-purple-500/40 shadow-inner">
                         <i class="fas fa-user-gear text-purple-400 text-2xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white">Luvish Dhingra</h3>
                     <p class="text-purple-300 text-xs font-semibold mb-1">Developer</p>
                     <p class="text-purple-400 text-[11px] mb-3">Reg: 12411862</p>
                     <div class="flex justify-center space-x-3 text-sm">
-                        <a href="https://github.com/Luvdhingra00" target="_blank" rel="noopener"
-                            class="text-purple-400 hover:text-white transition">
+                        <a href="https://github.com/Luvdhingra00" target="_blank" rel="noopener" class="text-purple-400 hover:text-white transition">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/lovish-dhingra-063baa324/" target="_blank" rel="noopener"
-                            class="text-purple-400 hover:text-white transition">
+                        <a href="https://www.linkedin.com/in/lovish-dhingra-063baa324/" target="_blank" rel="noopener" class="text-purple-400 hover:text-white transition">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -1303,15 +1114,13 @@
     </section>
 
     <!-- Footer -->
-    <footer
-        class="bg-gradient-to-br from-indigo-950 via-slate-900 to-gray-950 text-white pt-12 pb-8 px-4 border-t border-slate-800">
+    <footer class="bg-gradient-to-br from-indigo-950 via-slate-900 to-gray-950 text-white pt-12 pb-8 px-4 border-t border-slate-800">
         <div class="container mx-auto max-w-6xl">
             <div class="grid md:grid-cols-3 gap-8 mb-8 text-xs">
                 <div>
                     <div class="flex items-center space-x-2.5 mb-3">
                         <i class="fas fa-route text-indigo-400 text-xl"></i>
-                        <span
-                            class="text-xl font-black bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 text-transparent">RouteOptima</span>
+                        <span class="text-xl font-black bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 text-transparent">RouteOptima</span>
                     </div>
                     <p class="text-gray-400 leading-relaxed">
                         High-performance algorithmic path optimization for food delivery and urban logistics.
@@ -1325,23 +1134,19 @@
                         <li><a href="#how-it-works" class="hover:text-cyan-300 transition">How It Works</a></li>
                         <li><a href="#optimizer" class="hover:text-cyan-300 transition">Interactive Optimizer</a></li>
                         <li><a href="#algorithms" class="hover:text-cyan-300 transition">Algorithms Deep Dive</a></li>
-                        <li><a href="#comparison" class="hover:text-cyan-300 transition">Algorithm Benchmark Matrix</a>
-                        </li>
+                        <li><a href="#comparison" class="hover:text-cyan-300 transition">Algorithm Benchmark Matrix</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-sm font-bold mb-3 text-white">Contact &amp; Research</h4>
-                    <p class="text-gray-400 mb-2">Developed as part of computer science graph theory &amp; logistics
-                        research.</p>
-                    <p class="text-indigo-300 font-semibold"><i class="fas fa-envelope mr-1.5"></i>
-                        officialharsh2580@gmail.com</p>
+                    <p class="text-gray-400 mb-2">Developed as part of computer science graph theory &amp; logistics research.</p>
+                    <p class="text-indigo-300 font-semibold"><i class="fas fa-envelope mr-1.5"></i> officialharsh2580@gmail.com</p>
                 </div>
             </div>
 
             <div class="pt-6 border-t border-slate-800 text-center text-gray-500 text-[11px]">
-                &copy; 2025 RouteOptima &bull; Built with HTML5, Vanilla JavaScript, CSS3 &amp; TailwindCSS. All rights
-                reserved.
+                &copy; 2025 RouteOptima &bull; Built with HTML5, Vanilla JavaScript, CSS3 &amp; TailwindCSS. All rights reserved.
             </div>
         </div>
     </footer>
